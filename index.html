@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Signal in the Subway</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Site CSS -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg-flicker" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="status-dot" aria-hidden="true"></div>
+      <span class="brand-text">NYC SIGNAL MONITOR</span>
+    </div>
+
+    <div class="controls">
+      <button id="btnMute" class="chip" type="button" aria-pressed="false" title="Toggle sound">
+        Sound: ON
+      </button>
+      <button id="btnReset" class="chip chip-danger" type="button" title="Restart story">
+        Restart
+      </button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- START -->
+    <section class="scene active" data-scene="start">
+      <div class="card hero">
+        <h1 class="glitch" data-text="THE SIGNAL IN THE SUBWAY">THE SIGNAL IN THE SUBWAY</h1>
+
+        <p class="subhead">
+          A frequency cuts through your headphones. Nobody else reacts.
+          The platform lights <span class="signal" id="signalWord" title="Hover me">stutter</span>.
+        </p>
+
+        <figure class="media">
+          <!-- Replace with your original image -->
+          <img src="assets/images/platform_image_2.png" alt="A subway platform at night" />
+          <figcaption>Late night. Empty platform. One signal. One choice.</figcaption>
+        </figure>
+
+        <div class="cta-row">
+          <button class="btn primary pulse" data-next="choice1" type="button">Start the story</button>
+          <button class="btn ghost" data-next="about" type="button">About / Credits</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="scene" data-scene="about">
+      <div class="card">
+        <h2>About</h2>
+        <p>
+          <em>The Signal in the Subway</em> is an interactive mystery set in the New York City subway system. While waiting on a late‑night platform, the player begins hearing a strange signal through their headphones. Following the signal leads through trains, stations, and hidden tunnels beneath the city where each decision unlocks a different path and ending.
+        </p>
+
+        <ul class="bullet">
+          <li><strong>Events:</strong> click choices, hover signal distortion, scroll unlock</li>
+          <li><strong>Animations:</strong> glitch title, flicker overlay, fade-in scenes</li>
+          <li><strong>Sound:</strong> static/rumble/beep on user actions</li>
+        </ul>
+
+        <div class="cta-row">
+          <button class="btn primary" data-next="start" type="button">Back</button>
+        </div>
+
+        <hr class="hr" />
+
+        <h3>Credits</h3>
+        <p class="small">
+          Images generated with ChatGPT.<br />
+          Sound effects sourced from Mixkit.
+        </p>
+      </div>
+    </section>
+
+    <!-- CHOICE 1 -->
+    <section class="scene" data-scene="choice1">
+      <div class="card">
+        <h2>Signal Detected</h2>
+        <p>The audio snaps into a pattern—like coded taps. A train approaches. The doors open.</p>
+
+        <div class="grid two">
+          <div class="panel">
+            <img src="assets/images/f_train_image.png" alt="Train arriving" />
+            <h3>Board the F train</h3>
+            <p>2nd Ave. A masked figure watches the doors.</p>
+            <button class="btn primary" data-next="ftrain" type="button">Board the F</button>
+          </div>
+
+          <div class="panel">
+            <img src="assets/images/delancy_image.jpg" alt="Station corridor" />
+            <h3>Wait for the G train</h3>
+            <p>Bergen St. A maintenance door sits slightly open.</p>
+            <button class="btn primary" data-next="gtrain" type="button">Wait for the G</button>
+          </div>
+        </div>
+
+        <div class="cta-row">
+          <button class="btn ghost" data-back type="button">Back</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- F TRAIN -->
+    <section class="scene" data-scene="ftrain">
+      <div class="card">
+        <h2>F Train — 2nd Avenue</h2>
+        <p>The masked figure slips between cars. The signal gets louder in your skull.</p>
+
+        <figure class="media">
+          <img src="assets/images/figure_image.png" alt="Masked figure near a train" />
+          <figcaption>The figure doesn’t run. They expect you to follow.</figcaption>
+        </figure>
+
+        <div class="grid two">
+          <div class="panel">
+            <h3>Follow the masked figure</h3>
+            <p>Locked doors. Hidden corridors. A place that shouldn’t exist.</p>
+            <button class="btn primary" data-next="endingA" type="button">Follow</button>
+          </div>
+
+          <div class="panel">
+            <h3>Ignore and exit at Delancey</h3>
+            <p>You choose normal. The signal hates that.</p>
+            <button class="btn primary" data-next="endingB" type="button">Exit</button>
+          </div>
+        </div>
+
+        <div class="cta-row">
+          <button class="btn ghost" data-back type="button">Back</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- G TRAIN -->
+    <section class="scene" data-scene="gtrain">
+      <div class="card">
+        <h2>G Train — Bergen Street</h2>
+        <p>The platform is colder here. A maintenance door marked <em>AUTHORIZED ONLY</em> is unlocked.</p>
+
+        <figure class="media">
+          <img src="assets/images/bergen_st_image.png" alt="Bergen Street station" />
+          <figcaption>The signal pulses like a heartbeat.</figcaption>
+        </figure>
+
+        <div class="grid two">
+          <div class="panel">
+            <h3>Enter maintenance tunnel</h3>
+            <p>The air tastes like metal and old electricity.</p>
+            <button class="btn primary" data-next="tunnel" type="button">Enter Tunnel</button>
+          </div>
+
+          <div class="panel">
+            <h3>Ride to the end of the line</h3>
+            <p>The last stop is never on the map.</p>
+            <button class="btn primary" data-next="ghost" type="button">Ride On</button>
+          </div>
+        </div>
+
+        <div class="cta-row">
+          <button class="btn ghost" data-back type="button">Back</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- TUNNEL -->
+    <section class="scene" data-scene="tunnel">
+      <div class="card">
+        <h2>Maintenance Tunnel</h2>
+        <p>Your footsteps echo. The lights flicker. A door ahead leaks blue light.</p>
+
+        <figure class="media">
+          <img src="assets/images/path_way.png" alt="A glowing room filled with screens" />
+          <figcaption>Blue light leaks under the door. A low hum answers your breathing.</figcaption>
+        </figure>
+
+        <div class="grid two">
+          <div class="panel">
+            <h3>Discover secret terminal</h3>
+            <p>The room is alive. Screens watch you back.</p>
+            <button class="btn primary" data-next="endingA_terminal" type="button">Open Door</button>
+          </div>
+
+          <div class="panel">
+            <h3>Get trapped</h3>
+            <p>The door behind you clicks. The signal becomes static.</p>
+            <button class="btn primary" data-next="endingB_trap" type="button">Wrong Turn</button>
+          </div>
+        </div>
+
+        <div class="cta-row">
+          <button class="btn ghost" data-back type="button">Back</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- GHOST -->
+    <section class="scene" data-scene="ghost">
+      <div class="card">
+        <h2>End of the Line</h2>
+        <p>The train stops. The doors don’t open. A reflection moves in the window—behind you.</p>
+
+        <figure class="media">
+          <img src="assets/images/ghostly_shiloutte.png" alt="An eerie empty train" />
+          <figcaption>They were already on the train. They were waiting.</figcaption>
+        </figure>
+
+        <div class="cta-row">
+          <button class="btn primary" data-next="endingC" type="button">Look Up</button>
+          <button class="btn ghost" data-back type="button">Back</button>
+        </div>
+
+        <div class="scroll-hint">Scroll to the bottom of the page at any time to unlock a hidden log entry.</div>
+      </div>
+    </section>
+
+    <!-- ENDING A -->
+    <section class="scene" data-scene="endingA">
+      <div class="card ending a">
+        <h2>ENDING A — Join the Resistance</h2>
+        <figure class="media">
+            <img src="assets/images/suspect.png" alt="Hidden underground control room full of glowing screens" />
+          <img src="assets/images/control_room.png" alt="Hidden underground control room full of glowing screens" />
+          <figcaption>The signal leads you somewhere deeper than the subway.</figcaption>
+        </figure>
+
+        <p>
+          The masked figure leads you through a locked maintenance corridor.
+          The tunnel opens into a hidden control room glowing with monitors and cables.
+          Signals ripple across the screens like veins beneath the city.
+        </p>
+
+        <p>
+          A voice behind you whispers,
+          <span class="quote">“You finally heard it.”</span>
+        </p>
+
+        <p>
+          The subway isn’t just transportation.
+          It’s a hidden network of signals and surveillance running beneath New York.
+          And somehow… the system chose you.
+        </p>
+        <div class="badge">ACCESS GRANTED</div>
+        <div class="cta-row">
+          <button class="btn primary" data-next="start" type="button">Restart</button>
+          <button class="btn ghost" data-next="about" type="button">Credits</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ENDING B (Delancey / fades) -->
+    <section class="scene" data-scene="endingB">
+      <div class="card ending b">
+        <h2>ENDING B — Signal Fades</h2>
+        <figure class="media">
+          <img src="assets/images/empty_subway.png" alt="Quiet empty subway platform at night" />
+          <figcaption>The city continues like nothing happened.</figcaption>
+        </figure>
+
+        <p>
+          You step off the train at Delancey and pull off your headphones.
+          Instantly the signal disappears.
+        </p>
+
+        <p>
+          The platform fills with ordinary noise again—footsteps, announcements, trains arriving.
+          Maybe it was just interference.
+        </p>
+
+        <p>
+          But as the doors close behind you, the headphones crackle once more.
+          Just for a moment.
+        </p>
+
+        <p>
+          <span class="quote">Maybe you weren't supposed to ignore it.</span>
+        </p>
+        <div class="badge">CONNECTION LOST</div>
+        <div class="cta-row">
+          <button class="btn primary" data-next="start" type="button">Restart</button>
+          <button class="btn ghost" data-next="about" type="button">Credits</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ENDING A (Terminal) -->
+    <section class="scene" data-scene="endingA_terminal">
+      <div class="card ending a">
+        <h2>ENDING A — Secret Terminal</h2>
+        <figure class="media">
+          <img src="assets/images/secret_room.png" alt="Glowing room filled with computer terminals" />
+          <figcaption>A hidden system buried beneath the subway.</figcaption>
+        </figure>
+
+        <p>
+          You push open the door and step into a room filled with glowing terminals.
+          Screens flicker with maps of the entire subway system.
+        </p>
+
+        <p>
+          One monitor turns toward you and a cursor begins typing by itself:
+          <span class="quote">WELCOME BACK</span>
+        </p>
+
+        <p>
+          Somehow the system recognizes you.
+          The signal was never random.
+        </p>
+        <div class="badge">SIGNAL STABLE</div>
+        <div class="cta-row">
+          <button class="btn primary" data-next="start" type="button">Restart</button>
+          <button class="btn ghost" data-next="about" type="button">Credits</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ENDING B (Trapped) -->
+    <section class="scene" data-scene="endingB_trap">
+      <div class="card ending b">
+        <h2>ENDING B — Trapped</h2>
+        <figure class="media">
+          <img src="assets/images/trapped.png" alt="Dark subway tunnel closing in" />
+          <figcaption>The tunnels were never meant to be explored.</figcaption>
+        </figure>
+
+        <p>
+          The door behind you slams shut.
+          The lights flicker and then die completely.
+        </p>
+
+        <p>
+          The signal becomes a flat line in your headphones.
+          Static fills the silence.
+        </p>
+
+        <p>
+          You press your hands against the concrete walls.
+          They feel warm… like something is breathing behind them.
+        </p>
+        <div class="badge">NO EXIT</div>
+        <div class="cta-row">
+          <button class="btn primary" data-next="start" type="button">Restart</button>
+          <button class="btn ghost" data-next="about" type="button">Credits</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ENDING C -->
+    <section class="scene" data-scene="endingC">
+      <div class="card ending c">
+        <h2>ENDING C — Lost Forever</h2>
+        <figure class="media">
+          <img src="assets/images/ghost.png" alt="Ghostly passengers inside a dark subway train" />
+          <figcaption>Some passengers never leave the subway.</figcaption>
+        </figure>
+
+        <p>
+          The train moves through darkness with no stops and no announcements.
+        </p>
+
+        <p>
+          The passengers around you sit perfectly still.
+          None of them blink.
+        </p>
+
+        <p>
+          When you look at the reflection in the window, you finally understand.
+          You’re sitting among them now.
+        </p>
+
+        <p>
+          The train keeps moving.
+          And it never reaches the end of the line.
+        </p>
+        <div class="badge">OFF THE MAP</div>
+        <div class="cta-row">
+          <button class="btn primary" data-next="start" type="button">Restart</button>
+          <button class="btn ghost" data-next="about" type="button">Credits</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hidden unlock (scroll) -->
+    <section class="scene" data-scene="log">
+      <div class="card">
+        <h2>Hidden Log Entry</h2>
+        <p class="small">You unlocked this by scrolling. That means you’re paying attention.</p>
+        <p><span class="quote">“If you can hear the signal, you’re already part of the network.”</span></p>
+        <div class="cta-row">
+          <button class="btn ghost" data-next="start" type="button">Return</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Sounds (play only after user clicks) -->
+  <audio id="sndStatic" src="assets/sounds/horror static.wav" preload="auto"></audio>
+  <audio id="sndRumble" src="assets/sounds/mixkit-weird-radio-frequency-connection-2553.wav" preload="auto"></audio>
+  
+
+  <script src="script.js"></script>
+</body>
+</html>
